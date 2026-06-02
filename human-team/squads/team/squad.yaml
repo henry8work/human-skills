@@ -1,0 +1,52 @@
+squad:
+  code: team
+  name: Creative Team
+  description: >
+    Squad of 10 specialized creative agents that turn a raw idea into
+    publishable content. Works as a pipeline (idea → publication) or each
+    agent can be invoked individually for ad-hoc tasks.
+  icon: 🎬
+  language: pt-BR
+  type: content
+
+skills:
+  - web_search
+  - web_fetch
+  - canva
+  - image-creator
+  - image-fetcher
+  - image-ai-generator
+  - template-designer
+  - instagram-publisher
+  - blotato
+
+data:
+  - pipeline/data/research-brief.md
+  - pipeline/data/domain-framework.md
+  - pipeline/data/campaign-delivery-system.md
+  - pipeline/data/image-prompt-system.md
+  - pipeline/data/gpt-image-kv-system.md
+  - pipeline/data/headline-intelligence-system.md
+  - pipeline/data/quality-criteria.md
+  - pipeline/data/output-examples.md
+  - pipeline/data/anti-patterns.md
+  - pipeline/data/tone-of-voice.md
+  - pipeline/data/expertise/index.md
+  - pipeline/data/expertise/briefer.md
+  - pipeline/data/expertise/planner.md
+  - pipeline/data/expertise/scout.md
+  - pipeline/data/expertise/creative-director.md
+  - pipeline/data/expertise/scriptwriter.md
+  - pipeline/data/expertise/art-director.md
+  - pipeline/data/expertise/storyboarder.md
+  - pipeline/data/expertise/producer.md
+  - pipeline/data/expertise/editor.md
+  - pipeline/data/expertise/social-manager.md
+  - pipeline/data/expertise/content-multiplier.md
+
+memory:
+  - _memory/memories.md
+  - _memory/runs.md
+
+pipeline:
+  entrypoint: pipeline/pipeline.yaml

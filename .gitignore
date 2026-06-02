@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Personal Claude Code config (never ship)
+.claude/settings.local.json
+**/.claude/settings.local.json
+
+# Codex variants (Claude Code distribution only)
+.Codex/
+.codex/
+**/.Codex/
+**/.codex/
+
+# Node
+node_modules/
+**/node_modules/
+package-lock.json.bak
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Run outputs / user data (must never ship)
+human-output/
+**/desdobramento/
+**/runs/
+**/outputs/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
