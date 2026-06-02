@@ -47,12 +47,20 @@ Exception: `human-social` writes into `{input-folder}/desdobramento/` because it
 
 After each run, the skill reports the final folder as a clickable link plus all non-`.md` deliverables (images, videos, JSONs, CSVs) as clickable links.
 
-## Visual defaults
+## Visual generation routing
 
-- **Higgsfield CLI** is the only visual generation path. Never Higgs MCP, fal.ai, or Flow AI.
-- **Nano Banana 2** is the default image model.
-- **GPT Image 2** is used only for `human-carrossel` slides.
-- Before generating any asset, the skill confirms: project name, quantity, aspect ratio, resolution, references, purpose, output folder.
+Before rendering **any image**, the skill asks the user to choose between two providers:
+
+- **Magnific** via direct MCP/API — model `nano-banana-pro-flash`, `resolution: "1K"`, the intended free/default path.
+- **Higgsfield** via MCP/CLI — paid, higher-resolution alternative (`nano_banana_2` at 2k by default).
+
+The full canonical rule lives in each skill's `SKILL.md` under the `IMAGE_GENERATION_ROUTE_RULE` block. Skills should not call `mcp__magnific_oauth.images_generate` for routine generation; `magnific-oauth.account_balance` is used only to check credits.
+
+**Exceptions:**
+- `human-carrossel` does **not** ask — its slide pipeline is pinned to `gpt_image_2` via Higgsfield CLI.
+- `human-cinematic` / `human-team` / `human-motion` video rendering is always Higgsfield (Seedance or Kling). The routing question applies only to stills.
+
+Before generating any asset, the skill also confirms: project name, quantity, aspect ratio, resolution, references, purpose, output folder.
 
 ## Authoring credits
 

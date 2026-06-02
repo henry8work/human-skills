@@ -1,11 +1,21 @@
 ---
 name: human-team
-description: Creative multi-agent team (OpenSquad) that turns an idea, reference, or existing material into a structured full production — brief, plan, dossier, concept, script, art direction, storyboard, production sheet, teaser/main/secondary assets, ads in 9:16/4:5/16:9, copy-pack, Notion calendar, and handoff. Use whenever the user asks for "full campaign", "creative team", "virtual agency", "multi-agent production", "OpenSquad", "turn this reference into a campaign", "I have a product brief and want the whole package — images, ads, copies, emails, and calendar", "improve this script with the team", "finish this campaign". Triggers (EN/PT) — full campaign, creative squad, multi-agent pipeline, OpenSquad, campanha completa, time criativo, agência virtual, produção multi-agente, brief de produto pacote completo. Routes to the default creative squad (not a generic menu).
+description: Creative multi-agent team (OpenSquad) that turns an idea, reference, or existing material into a structured full production — brief, plan, dossier, concept, script, art direction, storyboard, production sheet, teaser/main/secondary assets, ads in 9:16/4:5/16:9, copy-pack, Notion calendar, and handoff. Image rendering asks the user to choose Magnific (free default) or Higgsfield (paid); video is always Higgsfield (Seedance/Kling). Use whenever the user asks for "full campaign", "creative team", "virtual agency", "multi-agent production", "OpenSquad", "turn this reference into a campaign", "I have a product brief and want the whole package — images, ads, copies, emails, and calendar", "improve this script with the team", "finish this campaign". Triggers (EN/PT) — full campaign, creative squad, multi-agent pipeline, OpenSquad, campanha completa, time criativo, agência virtual, produção multi-agente, brief de produto pacote completo. Routes to the default creative squad (not a generic menu).
 ---
 
 # Human Team
 
 Creative multi-agent team based on OpenSquad. Takes an idea/reference/material and returns structured production with human approval at checkpoints.
+
+## Visual generation routing
+
+<!-- IMAGE_GENERATION_ROUTE_RULE -->
+> Image generation rule: always use `imageprompts.md` as the creative/prompt guide when present. Before rendering any image, ask the user to choose: **Magnific** via direct MCP/API (`nano-banana-pro-flash`, `resolution: "1K"`, intended free/default) or **Higgsfield** via MCP/CLI (paid). Do not use `mcp__magnific_oauth.images_generate` for routine Magnific image generation unless explicitly requested; use `magnific-oauth.account_balance` only to check/measure credits.
+<!-- /IMAGE_GENERATION_ROUTE_RULE -->
+
+**Default: Magnific (free).** Before the visual phase begins, briefly tell the user *"Going with Magnific (free) for the campaign images — switch to Higgsfield (paid)?"* If they don't push back, proceed with Magnific. If they ask for Higgsfield, switch. **Never silently render on Higgsfield.**
+
+Ask once at the start of the visual phase; the choice applies to teaser + main + secondary assets + ads. Video render is always Higgsfield (Seedance/Kling).
 
 ## Language
 
@@ -82,7 +92,8 @@ In full-campaign mode: Planner defines the package → Art Director handles visu
 
 - **Do not skip human checkpoints.**
 - Video only after frames are approved.
-- Visual render: Higgsfield CLI + Nano Banana 2 (images); Seedance/Kling (video).
+- Always ask the image routing question (Magnific vs Higgsfield) before rendering.
+- Video render: Higgsfield (Seedance/Kling).
 - Notion MCP is optional.
 - Before generating any visual asset: confirm project, quantity, aspect ratio, resolution, references, purpose, output folder.
 
@@ -92,7 +103,7 @@ In full-campaign mode: Planner defines the package → Art Director handles visu
 - Playwright/MCP (web investigation)
 - Notion MCP (calendar)
 - OpenSquad engine (bundled)
-- Higgsfield CLI logged in
+- Magnific MCP/API or Higgsfield CLI logged in
 
 ## Final delivery
 

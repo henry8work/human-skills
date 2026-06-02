@@ -1,11 +1,21 @@
 ---
 name: human-dna
-description: Creates, edits, audits, and operationalizes the Creative DNA of a brand — visual identity, tone of voice, strategy, behavior, audience, anti-patterns, photography, tools, and applications. Generates a canonical `DNA.md` + a per-project `CLAUDE.md` so Claude Code follows the brand style. Use whenever the user asks for "create brand", "creative DNA", "branding", "visual identity", "tone of voice", "brand audit", "manifesto", "positioning", "voice and tone", "brand book", "rebrand", or wants to generate/refine materials respecting a specific brand. Triggers (EN/PT) — brand, branding, creative DNA, DNA criativo, identidade visual, tom de voz, auditoria de marca, manifesto, posicionamento, voice and tone, manual da marca, rebrand, brand book. Multi-project: each brand lives in `projetos/{slug}/`.
+description: Creates, edits, audits, and operationalizes the Creative DNA of a brand — visual identity, tone of voice, strategy, behavior, audience, anti-patterns, photography, tools, and applications. Generates a canonical `DNA.md` + a per-project `CLAUDE.md` so Claude Code follows the brand style. Use whenever the user asks for "create brand", "creative DNA", "branding", "visual identity", "tone of voice", "brand audit", "manifesto", "positioning", "voice and tone", "brand book", "rebrand", or wants to generate/refine materials respecting a specific brand. Triggers (EN/PT) — brand, branding, creative DNA, DNA criativo, identidade visual, tom de voz, auditoria de marca, manifesto, posicionamento, voice and tone, manual da marca, rebrand, brand book. Brand image generation asks the user to choose Magnific (free default) or Higgsfield (paid). Multi-project: each brand lives in `projetos/{slug}/`.
 ---
 
 # Human DNA
 
 System for creating and operating a brand's Creative DNA. Each brand becomes a canonical `DNA.md` + a per-project `CLAUDE.md` + state.
+
+## Visual generation routing
+
+<!-- IMAGE_GENERATION_ROUTE_RULE -->
+> Image generation rule: always use `imageprompts.md` as the creative/prompt guide when present. Before rendering any image, ask the user to choose: **Magnific** via direct MCP/API (`nano-banana-pro-flash`, `resolution: "1K"`, intended free/default) or **Higgsfield** via MCP/CLI (paid). Do not use `mcp__magnific_oauth.images_generate` for routine Magnific image generation unless explicitly requested; use `magnific-oauth.account_balance` only to check/measure credits.
+<!-- /IMAGE_GENERATION_ROUTE_RULE -->
+
+**Default: Magnific (free).** Before each brand-image render, briefly tell the user *"Going with Magnific (free) — switch to Higgsfield (paid)?"* If they don't push back, proceed with Magnific. If they ask for Higgsfield, switch. **Never silently render on Higgsfield.**
+
+Applies to every brand-image render in this skill (test pieces, audit material, photo direction examples, etc.). The brand's `DNA.md` may also pin a preferred provider — when it does, still confirm with the user before paying.
 
 ## Language
 
@@ -25,7 +35,7 @@ Mirror the user's language. Conversation can be EN or PT. The `DNA.md` and `CLAU
   - `14-R1-Brand-Scout.md`, `15-R2-DNA-Routine-Local.md`
   - `16-Como-usar.md`, `17-Troubleshooting.md`, `18-Design-Director.md`
   - `_template/CLAUDE.md` — per-project customized template
-- [projetos/](./projetos) — brand container (each brand at `projetos/{slug}/`)
+- [projetos/](./projetos) — brand container
 - [scripts/](./scripts) — utilities (`render-dna-pdf.py`, `collect-instagram.py`)
 
 ## Mandatory flow
@@ -36,7 +46,7 @@ Mirror the user's language. Conversation can be EN or PT. The `DNA.md` and `CLAU
 4. **Conversational briefing:** **one question per message**, save progress.
 5. **Generate** `dna-criativo/DNA.md` following `01-DNA-Master.md`.
 6. **Generate** `CLAUDE.md` at the project root from `_template/CLAUDE.md`.
-7. **Test** a small piece following the DNA.
+7. **Test** a small piece following the DNA → ask provider per the routing rule.
 8. **Refine** with feedback or record adherence approval.
 9. **Review** consistency DNA ↔ test ↔ refinement.
 10. **Use** the finished DNA to generate, audit, or edit materials.
@@ -57,7 +67,7 @@ Mirror the user's language. Conversation can be EN or PT. The `DNA.md` and `CLAU
 
 - **One question per message** in the briefing — never stack.
 - Read `CLAUDE.md` in full before operating.
-- Brand image generation uses Higgsfield CLI + Nano Banana 2.
+- Brand image generation always asks the routing question (Magnific or Higgsfield).
 - Notion/Drive/Routines are optional.
 - Before generating any visual: confirm project, quantity, aspect ratio, resolution, references, purpose, folder.
 
