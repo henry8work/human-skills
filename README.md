@@ -1,11 +1,12 @@
 # Human Skills
 
-Seven self-contained Claude Code skills for creative production at Human. Each skill bundles all of its own intelligence — once installed, it works in any folder without depending on a parent repo or environment variables.
+Eight self-contained Claude Code skills for creative production at Human. Each skill bundles all of its own intelligence — once installed, it works in any folder without depending on a parent repo or environment variables.
 
-## The seven skills
+## The skills
 
 | Skill | What it does |
 |---|---|
+| **human-setup** | First-run setup + dependency check. Connects the Magnific MCP and installs/logs in the Higgsfield CLI (Mac/Windows). Auto-routed from every skill's preflight when a provider isn't ready. |
 | **human-image** | Cinematic photo direction — turns a brief into a high-level prompt and renders via Higgsfield CLI + Nano Banana 2. |
 | **human-cinematic** | Full cinematic production — impossible product shots, video campaigns, scripts, character sheets, approved frames, videos via Higgsfield (Seedance / Kling / Nano Banana 2). |
 | **human-dna** | Creates, edits, audits, and operationalizes a brand's Creative DNA. Generates a canonical `DNA.md` + a per-project `CLAUDE.md` so Claude Code follows the brand style across all materials. Multi-project. |
@@ -33,7 +34,7 @@ Models used (provisioned through your Higgsfield account):
 - `gpt_image_2` — used only by `human-carrossel`
 - `seedance` / `kling` — used by `human-cinematic` for video
 
-See [INSTALL.md](INSTALL.md) for setup steps on Mac and Windows.
+First time? Just ask to **set up** — the `human-setup` skill checks what's connected and walks you through Magnific (free) and the Higgsfield CLI (paid). Every render skill also runs a preflight check and routes you to `human-setup` automatically if a provider isn't ready. See [INSTALL.md](INSTALL.md) for manual steps on Mac and Windows.
 
 ## Output conventions
 

@@ -1,11 +1,25 @@
 ---
 name: human-dna
-description: Creates, edits, audits, and operationalizes the Creative DNA of a brand — visual identity, tone of voice, strategy, behavior, audience, anti-patterns, photography, tools, and applications. Generates a canonical `DNA.md` + a per-project `CLAUDE.md` so Claude Code follows the brand style. Use whenever the user asks for "create brand", "creative DNA", "branding", "visual identity", "tone of voice", "brand audit", "manifesto", "positioning", "voice and tone", "brand book", "rebrand", or wants to generate/refine materials respecting a specific brand. Triggers (EN/PT) — brand, branding, creative DNA, DNA criativo, identidade visual, tom de voz, auditoria de marca, manifesto, posicionamento, voice and tone, manual da marca, rebrand, brand book. Brand image generation asks the user to choose Magnific (free default) or Higgsfield (paid). Multi-project: each brand lives in `projetos/{slug}/`.
+description: 'Creates, edits, audits, and operationalizes the Creative DNA of a brand — visual identity, tone of voice, strategy, behavior, audience, anti-patterns, photography, tools, and applications. Generates a canonical `DNA.md` + a per-project `CLAUDE.md` so Claude Code follows the brand style. Use whenever the user asks for "create brand", "creative DNA", "branding", "visual identity", "tone of voice", "brand audit", "manifesto", "positioning", "voice and tone", "brand book", "rebrand", or wants to generate/refine materials respecting a specific brand. Triggers (EN/PT) — brand, branding, creative DNA, DNA criativo, identidade visual, tom de voz, auditoria de marca, manifesto, posicionamento, voice and tone, manual da marca, rebrand, brand book. Brand image generation asks the user to choose Magnific (free default) or Higgsfield (paid). Multi-project: each brand lives in `projetos/{slug}/`.'
 ---
 
 # Human DNA
 
 System for creating and operating a brand's Creative DNA. Each brand becomes a canonical `DNA.md` + a per-project `CLAUDE.md` + state.
+
+## Preflight — confirm the render provider is ready (first run)
+
+Before the first render in a session, confirm the chosen provider is actually connected. Do not assume it is.
+
+- Magnific (default, free): verify the Magnific MCP is connected — a quick account/credit balance check is the cheapest probe. If the Magnific MCP tools are not available, the connector is not set up.
+- Higgsfield (paid): verify the higgsfield CLI is installed and logged in (e.g. higgsfield whoami). If the command is missing or not authenticated, it is not set up.
+
+If the required provider is NOT ready:
+1. Tell the user plainly which dependency is missing.
+2. Route them to the human-setup skill for step-by-step, OS-specific setup (Mac/Windows).
+3. Never hard-fail: meanwhile deliver the final English prompt ready to copy plus the exact provider command, so the user has something actionable immediately.
+
+Only proceed to render once the provider is confirmed ready.
 
 ## Visual generation routing
 

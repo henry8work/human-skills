@@ -7,6 +7,20 @@ description: Creates editorial Instagram carousels at scale — on-demand from a
 
 System for creating editorial Instagram carousels. On-demand (simple theme/proprietary text) or automated (R1 monitors news → R2 creates and renders).
 
+## Preflight — confirm the render provider is ready (first run)
+
+Before the first render in a session, confirm the chosen provider is actually connected. Do not assume it is.
+
+- Magnific (default, free): verify the Magnific MCP is connected — a quick account/credit balance check is the cheapest probe. If the Magnific MCP tools are not available, the connector is not set up.
+- Higgsfield (paid): verify the higgsfield CLI is installed and logged in (e.g. higgsfield whoami). If the command is missing or not authenticated, it is not set up.
+
+If the required provider is NOT ready:
+1. Tell the user plainly which dependency is missing.
+2. Route them to the human-setup skill for step-by-step, OS-specific setup (Mac/Windows).
+3. Never hard-fail: meanwhile deliver the final English prompt ready to copy plus the exact provider command, so the user has something actionable immediately.
+
+Only proceed to render once the provider is confirmed ready.
+
 ## Language
 
 Mirror the user's language. Conversation in EN or PT. The carousel **copy itself** is produced in the brand's audience language — ask if not obvious.

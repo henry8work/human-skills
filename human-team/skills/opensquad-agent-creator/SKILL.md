@@ -1,16 +1,10 @@
 ---
-name: "Best-Practice Creator"
-description: >
-  Guides creation and maintenance of best-practice files for the Opensquad best-practices library.
-  Handles format validation, cross-references, versioning, and catalog consistency.
-description_pt-BR: >
-  Guia a criação e manutenção de arquivos de best-practice na biblioteca de best-practices do Opensquad.
-  Cuida de validação de formato, referências cruzadas, versionamento e consistência do catálogo.
-description_es: >
-  Guía la creación y mantenimiento de archivos de best-practice en la biblioteca de best-practices de Opensquad.
-  Maneja validación de formato, referencias cruzadas, versionamiento y consistencia del catálogo.
+name: opensquad-agent-creator
+description: '> Guides creation and maintenance of best-practice files for the Opensquad best-practices library. Handles format validation, cross-references, versioning, and catalog consistency.'
+description_pt-BR: '> Guia a criação e manutenção de arquivos de best-practice na biblioteca de best-practices do Opensquad. Cuida de validação de formato, referências cruzadas, versionamento e consistência do catálogo.'
+description_es: '> Guía la creación y mantenimiento de archivos de best-practice en la biblioteca de best-practices de Opensquad. Maneja validación de formato, referencias cruzadas, versionamiento y consistencia del catálogo.'
 type: prompt
-version: "2.0.0"
+version: '"2.0.0"'
 ---
 
 # Best-Practice Creator — Workflow

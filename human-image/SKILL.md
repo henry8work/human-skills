@@ -7,6 +7,20 @@ description: Cinematic photo direction for AI image generation. Use whenever the
 
 Cinematic photo direction system with direct render. Turns a short idea, a visual reference, or a simple description into a high-level cinematic prompt and renders it through the chosen provider.
 
+## Preflight — confirm the render provider is ready (first run)
+
+Before the first render in a session, confirm the chosen provider is actually connected. Do not assume it is.
+
+- Magnific (default, free): verify the Magnific MCP is connected — a quick account/credit balance check is the cheapest probe. If the Magnific MCP tools are not available, the connector is not set up.
+- Higgsfield (paid): verify the higgsfield CLI is installed and logged in (e.g. higgsfield whoami). If the command is missing or not authenticated, it is not set up.
+
+If the required provider is NOT ready:
+1. Tell the user plainly which dependency is missing.
+2. Route them to the human-setup skill for step-by-step, OS-specific setup (Mac/Windows).
+3. Never hard-fail: meanwhile deliver the final English prompt ready to copy plus the exact provider command, so the user has something actionable immediately.
+
+Only proceed to render once the provider is confirmed ready.
+
 ## Visual generation routing
 
 <!-- IMAGE_GENERATION_ROUTE_RULE -->

@@ -1,6 +1,8 @@
 # Install — Human Skills
 
-Setup the seven Human skills (`human-image`, `human-cinematic`, `human-dna`, `human-carrossel`, `human-social`, `human-team`, `human-motion`) on a fresh machine.
+Setup the eight Human skills (`human-image`, `human-cinematic`, `human-dna`, `human-carrossel`, `human-social`, `human-team`, `human-motion`, `human-setup`) on a fresh machine.
+
+> Fastest path: after symlinking the skills, open Claude Code and say "set up the human skills" — the `human-setup` skill checks what's connected and guides Magnific + Higgsfield install for your OS.
 
 ## 1. Prerequisites
 
@@ -41,7 +43,7 @@ Claude Code auto-discovers skills under `~/.claude/skills/`. Symlink each of the
 
 ```bash
 mkdir -p ~/.claude/skills
-for d in human-image human-cinematic human-dna human-carrossel human-social human-team human-motion; do
+for d in human-image human-cinematic human-dna human-carrossel human-social human-team human-motion human-setup; do
   ln -sf "$HOME/repos/human-skills/$d" ~/.claude/skills/$d
 done
 ```
@@ -50,7 +52,7 @@ done
 
 ```powershell
 New-Item -ItemType Directory -Force -Path "$HOME\.claude\skills" | Out-Null
-$skills = @('human-image','human-cinematic','human-dna','human-carrossel','human-social','human-team','human-motion')
+$skills = @('human-image','human-cinematic','human-dna','human-carrossel','human-social','human-team','human-motion','human-setup')
 foreach ($s in $skills) {
   New-Item -ItemType SymbolicLink -Force -Path "$HOME\.claude\skills\$s" -Target "$HOME\repos\human-skills\$s"
 }
@@ -82,7 +84,7 @@ To list which skills are loaded:
 /skills
 ```
 
-You should see the seven `human-*` names in the output.
+You should see the eight `human-*` names in the output.
 
 ## 5. Update later
 

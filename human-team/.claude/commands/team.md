@@ -1,5 +1,5 @@
 ---
-description: Activates the Creative Agents Team: a simple flow for the user and a solid 10-agent pipeline to turn an idea into publishable content.
+description: 'Activates the Creative Agents Team: a simple flow for the user and a solid 10-agent pipeline to turn an idea into publishable content.'
 ---
 
 # /team — Creative Agents Team
