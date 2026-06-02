@@ -42,3 +42,6 @@ human-output/
 .env.*
 *.pem
 *.key
+
+# Build artifacts (.plugin files)
+dist/
