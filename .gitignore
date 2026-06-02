@@ -33,6 +33,9 @@ human-output/
 **/desdobramento/
 **/runs/
 **/outputs/
+**/magnific-generation/projects/
+**/campaigns/[!_]*/
+**/projetos/[!_]*/
 
 # Secrets
 .env
