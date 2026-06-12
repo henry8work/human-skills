@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "human-skills",
+  "version": "0.7.0",
+  "description": "Human's creative-production skills for Claude Code — image direction, cinematic product shots & video campaigns, brand Creative DNA, editorial carousels, IG/LinkedIn unfolding, multi-agent campaigns, and Remotion motion graphics.",
+  "owner": {
+    "name": "Human / Eightpoint Technologies"
+  },
+  "plugins": [
+    {
+      "name": "human-skills",
+      "description": "Nine creative-production skills with three render paths (Magnific MCP direct, Magnific Hybrid Run Unlimited, Higgsfield). Bilingual EN/PT.",
+      "version": "0.7.0",
+      "author": { "name": "Human" },
+      "source": "./raw-files-md",
+      "category": "productivity",
+      "tags": ["creative", "image-generation", "video", "branding", "campaigns", "magnific", "higgsfield"]
+    }
+  ]
+}
