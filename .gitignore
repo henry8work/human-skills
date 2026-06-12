@@ -45,3 +45,10 @@ human-output/
 
 # Build artifacts (.plugin files)
 dist/
+.venv-pdf/
+
+# how-it-works demo workspace — heavy example outputs (1GB+); keep only the
+# PDF generators and the published guides at how-it-works/ top level.
+how-it-works/how-it-works/
+how-it-works/*.plugin
+how-it-works/*.zip

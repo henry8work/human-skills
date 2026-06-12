@@ -1,0 +1,81 @@
+---
+name: human-cinematic
+description: Full cinematic production — impossible product shots, video campaigns, scripts, character sheets, approved frames, and videos. Images via one of three render paths chosen by the user — Magnific direct (plan credits), Magnific Hybrid Run Unlimited (zero credits), or Higgsfield (paid); videos via Higgsfield (Seedance/Kling) or Magnific (Kling 2.5+). Use whenever the user asks for "product shot", "cinematic product ad", "video campaign", "short film", "film/commercial script", "frame per scene", "video with Seedance/Kling", "recurring character", or pastes an amateur product photo asking for a premium ad. Triggers (EN/PT) — product shot, premium ad, cinematic campaign, script, roteiro, storyboard, character sheet, frame, Seedance, Kling, Nano Banana, Magnific, Higgsfield, IMAX, foto de produto pra ad, anúncio premium. HERO-FIRST flow for single product shots; video only after frames are approved.
+---
+
+# Human Cinematic
+
+Cinematic production system. Guides from idea → campaign with script, references, characters, character sheets, approved frames, and videos.
+
+## Preflight — confirm the render provider is ready (first run)
+
+Before the first render in a session, confirm the chosen provider is actually connected. Do not assume it is.
+
+- Magnific: verify the `magnific-mcp` tools respond (call `account_balance` — the cheapest probe; it also shows remaining plan credits). If they do not respond, the MCP is not set up — route the user to human-setup.
+- Higgsfield (paid): verify the higgsfield CLI is installed and logged in (e.g. higgsfield account status). If the command is missing or not authenticated, it is not set up.
+
+If the required provider is NOT ready:
+1. Tell the user plainly which dependency is missing.
+2. Route them to the human-setup skill for step-by-step, OS-specific setup (Mac/Windows).
+3. Never hard-fail: meanwhile deliver the final English prompt ready to copy plus the exact provider command, so the user has something actionable immediately.
+
+Only proceed to render once the provider is confirmed ready.
+
+## Visual generation routing
+
+<!-- IMAGE_GENERATION_ROUTE_RULE -->
+> Image generation rule: always use `imageprompts.md` as the creative/prompt guide when present. Before rendering any image, ask the user to choose one of the **three render paths**: 1) **Magnific MCP direto** — `magnific-mcp` tools (`images_generate` with `mode: "imagen-nano-banana-2-flash"`, `resolution: "1k"`; video via `video_generate` with `mode: "kling-25"`). Costs plan credits (~75/image), no extra money. 2) **Magnific Híbrido (Run Unlimited)** — zero credits: build a Space (`spaces_create` + `spaces_edit`) with pre-filled generator nodes, share the `webUrl`, the user clicks **Run Unlimited** in the browser, then collect results via `creations_search`/`spaces_state`. 3) **Higgsfield** — paid, the user's Higgsfield account and credits (MCP/CLI). The model parameter on Magnific is `mode`, never `model`. Use `account_balance` only to check/measure credits.
+<!-- /IMAGE_GENERATION_ROUTE_RULE -->
+
+**Always ask the render path.** Before the first image render of each campaign batch, present the three options and wait for an explicit choice — never assume. Ask it as: *"Como você quer renderizar? 1) Magnific direto (créditos do plano), 2) Híbrido Run Unlimited (zero créditos, você clica no navegador), 3) Higgsfield (pago)."* **Never silently render on Higgsfield.**
+
+Video generation is always Higgsfield (Seedance or Kling) — the routing question applies only to image frames/refs/character sheets, not to video render.
+
+## Language
+
+Mirror the user's language. Conversation can be EN or PT. **Image prompts are always in English. Video prompts for Seedance are in Chinese** when the framework requires (see `seedance-prompt-framework.md`).
+
+## Complete intelligence
+
+- [CLAUDE.md](CLAUDE.md) — core agent rules
+- [COMECE-AQUI.md](COMECE-AQUI.md) — main operational manual (PT, methodology applies regardless of language)
+- [PRODUCT-SHOTS.md](PRODUCT-SHOTS.md) — premium Product Shots flow
+- [SCRIPT_AI_SYSTEM.md](SCRIPT_AI_SYSTEM.md) — script system
+- [seedance-prompt-framework.md](seedance-prompt-framework.md) — prompt framework
+- [SETUP-GUIDE.md](SETUP-GUIDE.md) — technical setup
+- [_template/](./_template) — base template for new campaigns (copy it into `<cwd>/human-output/cinematic/{name}/`; never create campaigns inside the plugin directory)
+- [campaigns/](./campaigns) — campaign docs/examples (existing campaigns live in `<cwd>/human-output/cinematic/`)
+
+## Internal routing by intent
+
+1. **Detect the mode:**
+   - Impossible Product Shots → `PRODUCT-SHOTS.md`
+   - Full campaign (script + frames + video) → `COMECE-AQUI.md`
+   - Script only → `SCRIPT_AI_SYSTEM.md`
+   - Status / continue campaign → `<cwd>/human-output/cinematic/{name}/`
+2. **Product Shots:** Visual Intent → ask the render path (three options) → generation/iteration/inpainting → final polish.
+3. **Campaign:** detect if user has a script or needs Script AI → create `<cwd>/human-output/cinematic/{name}/` from `_template/` → references in `internal/` → character sheets when there's a recurring character → ask provider for each image batch → 1 frame per scene → **human approval** → videos (Higgsfield Seedance/Kling).
+
+## Default output
+
+```
+<cwd>/human-output/cinematic/{run_slug}/
+├── internal/      (handoff, refs, UUIDs, descriptors, logs, feedback)
+└── output/        (clean numbered results)
+```
+
+## Non-negotiable rules
+
+- **Video only after frames are approved** by the human.
+- Always follow the image routing rule above — ask which of the three render paths before rendering.
+- Video render: Higgsfield (Seedance or Kling).
+- Image prompts in English; Seedance prompts in Chinese when the framework requires.
+- Before generating: confirm project, quantity, aspect ratio, resolution, references, purpose, output folder.
+
+## Final delivery
+
+Report the **final folder** as a clickable link + list non-`.md` files as clickable links.
+
+## Compatibility
+
+Mac and Windows. Possible dependencies: Claude Code, Node/npm, Magnific MCP/API or Higgsfield CLI logged in.
