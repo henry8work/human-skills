@@ -1,7 +1,7 @@
 {
   "name": "human-skills",
-  "version": "0.7.0",
-  "description": "Nine creative production skills (incl. first-run setup) from Human — image direction, cinematic product shots & video campaigns, hero-first 15s vertical product ads, brand Creative DNA, editorial Instagram carousels, IG/LinkedIn unfolding, multi-agent OpenSquad full campaigns (/team command), and Remotion motion graphics. Three render paths on every skill: Magnific MCP direct (plan credits), Magnific Hybrid Run Unlimited (zero credits), or Higgsfield (paid); human-carrossel adds a ChatGPT-manual path. Bilingual EN/PT.",
+  "version": "0.7.1",
+  "description": "Nine creative-production skills from Human — image direction, cinematic product shots & video campaigns, vertical product ads, brand Creative DNA, editorial Instagram carousels, IG/LinkedIn unfolding, multi-agent OpenSquad campaigns (/team), and Remotion motion graphics. Three render paths: Magnific MCP direct (plan credits), Magnific Hybrid Run Unlimited (zero credits), or Higgsfield (paid). Bilingual EN/PT.",
   "author": {
     "name": "Human"
   },
