@@ -46,14 +46,25 @@ for s in "$STAGE"/skills/*/; do
 done
 # description length limit (1024 chars)
 python3 - "$STAGE" <<'PY'
-import sys, re, pathlib
+import sys, re, json, pathlib
 stage = pathlib.Path(sys.argv[1])
 bad = False
+
+# Plugin description: hard cap 500 chars (Claude desktop validator)
+pj = json.loads((stage / ".claude-plugin" / "plugin.json").read_text())
+pd = pj.get("description", "")
+if len(pd) > 500:
+    print(f"FATAL: plugin.json description {len(pd)}>500 chars"); bad = True
+
+# Skill descriptions: <=1024 chars AND no XML-like tags (<...>)
 for f in stage.glob("skills/*/SKILL.md"):
     m = re.search(r"^description: (.*?)$", f.read_text(), re.M | re.S)
     desc = re.split(r"\n(?=\w+:|---)", m.group(1))[0] if m else ""
     if len(desc) > 1024:
         print(f"FATAL: description >1024 chars ({len(desc)}) in {f}"); bad = True
+    tags = re.findall(r"<[a-zA-Z/][^>]*>", desc)
+    if tags:
+        print(f"FATAL: XML-like tag(s) {set(tags)} in description of {f}"); bad = True
 sys.exit(1 if bad else 0)
 PY
 # no client/run leftovers

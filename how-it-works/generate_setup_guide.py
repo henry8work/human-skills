@@ -79,7 +79,7 @@ HTML_DOC = """<!DOCTYPE html>
     <li><strong>Part 3</strong> — The Spaces flow: Claude writes the prompts and pre-fills a free, unlimited model; you open the link and click <em>Run Unlimited</em>.</li>
   </ul>
   <table class="meta">
-    <tr><td class="k">Plugin</td><td>human-skills · v0.7.0 · nine skills</td></tr>
+    <tr><td class="k">Plugin</td><td>human-skills · v0.7.1 · nine skills</td></tr>
     <tr><td class="k">Audience</td><td>Human design &amp; creative team</td></tr>
     <tr><td class="k">Providers</td><td>Magnific (plan credits / zero-credit Spaces) · Higgsfield (paid)</td></tr>
     <tr><td class="k">Time to Read</td><td>8 minutes</td></tr>
@@ -91,7 +91,7 @@ HTML_DOC = """<!DOCTYPE html>
   <p class="kicker">Part 1</p>
   <h2>Install the plugin</h2>
 
-  <p>Human Skills ships as a <strong>single file</strong> — <code>human-skills-v0.7.0.plugin</code>. The nine skills
+  <p>Human Skills ships as a <strong>single file</strong> — <code>human-skills-v0.7.1.plugin</code>. The nine skills
   — <em>human-setup, human-image, human-product-ad, human-cinematic, human-dna, human-carrossel,
   human-social, human-team, human-motion</em> — all live <strong>inside it</strong>. You install the plugin once and
   every skill comes with it. You never call a skill by name: you describe what you want — <em>"make me a key
@@ -103,14 +103,14 @@ HTML_DOC = """<!DOCTYPE html>
   <ol class="steps">
     <li>Open <strong>Customize</strong> in the Claude desktop app.</li>
     <li>Next to <strong>Plugins pessoais</strong>, click <strong>+</strong> &rarr; <strong>Criar plugin</strong> &rarr; <strong>Fazer upload de plugin</strong>.</li>
-    <li>Pick the <code>human-skills-v0.7.0.plugin</code> file. <strong>Done</strong> — "Human skills" shows up under your plugins, with all nine skills inside.</li>
+    <li>Pick the <code>human-skills-v0.7.1.plugin</code> file. <strong>Done</strong> — "Human skills" shows up under your plugins, with all nine skills inside.</li>
   </ol>
   {install_image_html}
 
   <p class="label">Where the file comes from</p>
   <p>Someone on the team shares the <code>.plugin</code> with you (Slack, Drive, AirDrop) — that's the whole
   hand-off. To build a fresh one from the repo, run <code>./build-plugin.sh</code>; it writes
-  <code>dist/human-skills-v0.7.0.plugin</code>, ready to upload.</p>
+  <code>dist/human-skills-v0.7.1.plugin</code>, ready to upload.</p>
 
   <p class="label">Prerequisites (only when a skill needs them)</p>
   <ul class="when">
